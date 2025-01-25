@@ -1,9 +1,14 @@
 // The  name oF the directory should always be api and nothing else this syntax was introduced in the 13th ver of next js
 import { db } from "../../../db/db";
 import { recipes } from "../../../db/schema";
+import { eq } from "drizzle-orm";
 
 export async function GET() {
-  const datas = await db.select().from(recipes);
+  const datas = await db
+    .select()
+    .from(recipes)
+    .where(eq(recipes.availability, true)); //Selects all the data from the DB
+  console.log(datas);
 
   return Response.json({
     recipes: datas,

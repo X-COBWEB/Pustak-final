@@ -1,5 +1,12 @@
 import { sql } from "drizzle-orm";
-import { pgTable, serial, text, timestamp, varchar } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  serial,
+  text,
+  timestamp,
+  varchar,
+  boolean,
+} from "drizzle-orm/pg-core";
 
 export const recipes = pgTable("recipes", {
   id: serial("id").primaryKey(), //The left side is the variable name that we will be seeing in our dasboard
@@ -8,4 +15,5 @@ export const recipes = pgTable("recipes", {
   subname: varchar("subname", { length: 100 }),
   createdat: timestamp("create_at").default(sql`CURRENT_TIMESTAMP`),
   upodatedat: timestamp("update_at").default(sql`CURRENT_TIMESTAMP`),
+  availability: boolean("availability").default(true), // Boolean column with default value
 });

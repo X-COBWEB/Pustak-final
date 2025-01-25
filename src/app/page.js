@@ -1,5 +1,6 @@
 import SearchForm from "./Components/SearchForm";
 import Card from "./Components/Card";
+import Chatbot from "./Components/Chatbot";
 
 const fetchRecipie = async () => {
   try {
@@ -26,6 +27,7 @@ export default async function Home() {
   return (
     <>
       <SearchForm />
+      <Chatbot />
       <div className="text-3xl font-bold mt-8 mx-auto text-center">
         Explore Books Available:
       </div>
@@ -37,3 +39,4 @@ export default async function Home() {
     </>
   );
 }
+

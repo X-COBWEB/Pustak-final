@@ -29,6 +29,13 @@
       "when": 1735657847358,
       "tag": "0003_good_guardian",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1737826813128,
+      "tag": "0004_flashy_northstar",
+      "breakpoints": true
     }
   ]
 }
