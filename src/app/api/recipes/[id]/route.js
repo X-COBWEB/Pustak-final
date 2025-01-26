@@ -4,9 +4,9 @@ import { eq } from "drizzle-orm";
 import { json } from "drizzle-orm/mysql-core";
 
 export async function GET(request, datafromurl) {
-  console.log("The data that came from url:\n");
-  const Meow = datafromurl.params;
-  console.log("Meow" + Meow);
+  // console.log("The data that came from url:\n");
+  // const Meow = datafromurl.params;
+  // console.log("Meow" + M eow);
   // console.log(Number(datafromurl.params.id));
   const id = await Number((await datafromurl.params).id);
 
@@ -44,6 +44,24 @@ export async function DELETE(request, datafromurl) {
     return Response.json(
       {
         message: "Data Deleted SUccesfullly",
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    return Response.json({ Messsage: error.message }, { status: 500 });
+  }
+}
+export async function POST(request, datafromurl) {
+  const _id = await Number((await datafromurl.params).id);
+  console.log(_id);
+  try {
+    await db
+      .update(recipes)
+      .set({ availability: false }) // Toggle the boolean value
+      .where(eq(recipes.id, _id)); // Ensure _id is defined
+    return Response.json(
+      {
+        message: "Data modified SUccesfullly",
       },
       { status: 200 }
     );
